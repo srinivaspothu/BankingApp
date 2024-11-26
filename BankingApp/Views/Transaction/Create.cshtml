@@ -1,0 +1,56 @@
+﻿@model BankingApp.Models.Transaction
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Transfer Funs</h4>
+<hr />
+<div class="row">
+    @*<div class="col-md-4">*@
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="FromAccount" class="control-label">From Account</label>
+                        @Html.DropDownList("ddlAccount1", Model.AccountList, "Select Account")
+                        @*<span asp-validation-for="FromAccount" class="text-danger"></span>*@
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="ToAccount" class="control-label">To Account</label>
+                        @Html.DropDownList("ddlAccount2", Model.AccountList, "Select Account")
+                        @*<span asp-validation-for="ToAccount" class="text-danger"></span>*@
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="AmountDebit" class="control-label">Amount To Transfer</label>
+                        <input asp-for="AmountDebit" width="50%" value="" />
+                    </div>
+                    <span asp-validation-for="AmountDebit" class="text-danger"></span>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <span class="text-danger">@ViewBag.Message</span>
+    </form>
+   
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

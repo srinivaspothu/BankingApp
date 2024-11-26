@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BankingApp.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FromAccount)*@
+                From Account
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ToAccount)*@
+                To Account
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.TransactionTime)*@
+                Transaction Time
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.AmountDebit)*@
+                Amount Debited
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FromAccountBal)*@
+                From Amount Balance
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ToAccountBal)*@
+                To Amount Balance
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountDebit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromAccountBal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToAccountBal)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                <a asp-action="TransDetails" asp-route-id="@item.Id">Details</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
